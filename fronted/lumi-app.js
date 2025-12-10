@@ -1,7 +1,7 @@
 // =========================
 // CONFIG BÁSICA
 // =========================
-const API_BASE = "http://localhost:3000";
+const API_BASE = "https://lumi-chatbot.up.railway.app/";
 
 const chatEl = document.getElementById("chat");
 const inputEl = document.getElementById("msg");
