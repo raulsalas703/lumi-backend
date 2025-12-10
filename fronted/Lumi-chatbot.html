@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Lumi – Ajolotito Chatbot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="lumi-styles.css" />
+  </head>
+  <body>
+    <div class="app-container" id="app-root">
+      <header class="header">
+        <div class="header-left">
+          <div class="lumi-avatar">
+            (•̀ᴗ•́)و
+          </div>
+          <div class="header-text">
+            <h1>Lumi · Ajolotito</h1>
+            <p>
+              <span class="status-dot"></span>
+              <span id="header-status">Modo invitado</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <button id="history-btn" class="history-btn" style="display:none;">
+            Historial
+          </button>
+
+          <div class="theme-selector">
+            <span>Colores:</span>
+            <div class="theme-dot rose" data-theme="rose" title="Rosa"></div>
+            <div class="theme-dot purple" data-theme="purple" title="Morado"></div>
+            <div class="theme-dot blue" data-theme="blue" title="Azul"></div>
+          </div>
+
+          <button id="logout-btn" class="logout-btn" style="display:none;">
+            Cerrar sesión
+          </button>
+        </div>
+      </header>
+
+      <div id="chat" class="chat-wrapper"></div>
+
+      <div id="typing-indicator" class="typing" style="display:none;">
+        Lumi está escribiendo...
+      </div>
+
+      <div class="hint">
+        Pulsa Enter para enviar · Lumi responde con cariño, no con diagnósticos
+      </div>
+
+      <div class="input-row">
+        <textarea
+          id="msg"
+          rows="2"
+          placeholder="Escríbele a Lumi cómo te sientes..."
+        ></textarea>
+        <button id="send-btn">Enviar</button>
+      </div>
+
+      <!-- OVERLAY LOGIN / REGISTRO / INVITADO -->
+      <div class="auth-overlay" id="auth-overlay">
+        <div class="auth-card">
+          <div class="auth-header">
+            <h2>Bienvenido con Lumi 🦎</h2>
+            <p>Elige cómo quieres entrar</p>
+          </div>
+
+          <div class="auth-tabs">
+            <button id="tab-login" class="auth-tab active">Iniciar sesión</button>
+            <button id="tab-register" class="auth-tab">Crear cuenta</button>
+          </div>
+
+          <form id="form-login" class="auth-form">
+            <div class="field">
+              <label for="login-email">Correo electrónico</label>
+              <input type="email" id="login-email" required />
+            </div>
+            <div class="field">
+              <label for="login-password">Contraseña</label>
+              <input type="password" id="login-password" required />
+            </div>
+            <div id="login-error" class="error-msg"></div>
+            <button type="submit" class="primary-btn">Entrar</button>
+          </form>
+
+          <form id="form-register" class="auth-form" style="display:none;">
+            <div class="field">
+              <label for="reg-username">Nombre / Usuario</label>
+              <input type="text" id="reg-username" required />
+            </div>
+            <div class="field">
+              <label for="reg-email">Correo electrónico</label>
+              <input type="email" id="reg-email" required />
+            </div>
+            <div class="field">
+              <label for="reg-password">Contraseña</label>
+              <input type="password" id="reg-password" required />
+            </div>
+            <div class="field">
+              <label for="reg-confirm">Repite la contraseña</label>
+              <input type="password" id="reg-confirm" required />
+            </div>
+            <p class="password-rules">
+              La contraseña debe tener mínimo 8 caracteres, una mayúscula y una minúscula.
+            </p>
+            <div id="reg-error" class="error-msg"></div>
+            <button type="submit" class="primary-btn">Crear cuenta</button>
+          </form>
+
+          <div class="divider">
+            <span>o</span>
+          </div>
+
+          <button id="guest-btn" class="guest-btn">
+            Entrar como invitado
+          </button>
+
+          <div class="auth-mode-label">
+            Modo actual:
+            <span class="badge-mode" id="auth-mode-label">
+              Invitado
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANEL LATERAL DE HISTORIAL -->
+      <div class="history-overlay" id="history-overlay">
+        <div class="history-panel">
+          <div class="history-header">
+            <h2>Conversaciones recientes</h2>
+            <button id="close-history" class="close-history">×</button>
+          </div>
+          <div class="history-list" id="history-list">
+            <!-- Se llena con JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="lumi-app.js"></script>
+  </body>
+</html>
